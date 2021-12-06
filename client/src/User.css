@@ -1,0 +1,42 @@
+.user{
+    display: block;
+    position: sticky;
+    width: 397px;
+    box-sizing: inherit;
+    border-left: 1px solid rgba(0, 0, 0, 0.1)
+}
+.user-fix{
+    width: inherit;
+    position: fixed;
+}
+.avi-box{
+    
+    margin: 0 auto;
+    width: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 218px;
+    font-family: var(--sans);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.avi{
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+}
+.user-name{
+    font-size: 16.8px;
+}
+.company{
+    font-size: 14px;
+    font-style: italic;
+}
+.nav-options{
+    text-align: left;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-weight: 300;
+}

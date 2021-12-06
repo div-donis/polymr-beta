@@ -1,0 +1,33 @@
+.navigation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 207px;
+    width: 267px;
+    height: 100vh;
+    box-sizing: inherit;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.nav-fix{
+    margin: 0 auto;
+    position: fixed;
+}
+.navigation div{
+    padding-left: 28px;
+}
+.nav-options{
+    font-weight: 400;
+    height: 380px;
+    color: var(--settled);
+   
+}
+.nav-link:hover{
+    color: var(--font);
+    border-left: 5px solid var(--font);
+}
+.nav-icons{
+    display: inline;
+    position: relative;
+    top: 2px;
+    right: 2px;
+}

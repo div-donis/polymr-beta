@@ -1,25 +1,53 @@
-import logo from './logo.svg';
 import './App.css';
+import Dashboard from './Dashboard';
+import LogIn from './LogIn';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { useState, useEffect } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+const App = () => {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/self").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    })
+  }
+
+  
+
+  if (user) {
+    console.log(user)
+    return(
+      <div className="App">
+        
+        <BrowserRouter>
+        <Redirect to='/app'/>
+          <Switch>
+            <Route path='/app'>    
+              <Dashboard  handleLogout={handleLogout} user={user}/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </div>
+    )
+  } else {
+    return <LogIn onLogin={setUser} />;
+  }
 }
 
 export default App;
