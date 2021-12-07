@@ -3,7 +3,7 @@ import './User.css'
 
 const User = ( {user, handleLogout} ) => {
         
-    {if (user) {
+    
         return (
         <div className='user'>
             <div className='user-fix'>       
@@ -12,19 +12,15 @@ const User = ( {user, handleLogout} ) => {
                     <div className='user-name'>{user.name}</div>
                     <div className='company'>{user.company} </div>
                 </div>
-                <div className='log-out' onClick={handleLogout()}>
-                    Log Out
+                <div className='user-controls'>
+                    <div className='log-out' onClick={handleLogout}>
+                        Log Out
+                    </div>
                 </div>
             </div>
         </div>
         )
-    }else{
-        return(
-        <div className='user'>
-
-        </div>
-        )
-    }}
+   
            
         
     

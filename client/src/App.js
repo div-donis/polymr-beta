@@ -1,8 +1,11 @@
 import './App.css';
-import Dashboard from './Dashboard';
 import LogIn from './LogIn';
+import Task from './Task';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useState, useEffect } from 'react'
+import Navigation from './Navigation';
+import User from './User';
+import TaskGrid from './TaskGrid';
 
 
 
@@ -34,19 +37,30 @@ const App = () => {
     console.log(user)
     return(
       <div className="App">
-        
+        <Navigation />
         <BrowserRouter>
-        <Redirect to='/app'/>
+        <Redirect to='/tasks'/>
           <Switch>
-            <Route path='/app'>    
-              <Dashboard  handleLogout={handleLogout} user={user}/>
+            <Route path='/tasks'>    
+              <TaskGrid user={user}/>
+            </Route>
+            <Route name='task' path="/task/:id">
+              <Task />
             </Route>
           </Switch>
         </BrowserRouter>
+        <User handleLogout={handleLogout} user={user}/>
       </div>
     )
   } else {
-    return <LogIn onLogin={setUser} />;
+    return( 
+      <BrowserRouter>
+      <Redirect to='/signin'/>
+        <Route path='/signin'> 
+          <LogIn onLogin={setUser} />
+        </Route>
+      </BrowserRouter>
+    )
   }
 }
 

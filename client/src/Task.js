@@ -1,37 +1,53 @@
-import React from "react"
+import React from 'react'
+import { useLocation } from 'react-router';
+import './Task.css'
+import Navigation from './Navigation';
+import User from './User';
 
-const Task = ({t}) => {
+const Task = () => {
 
-     
-function titleCase(str) {
-    str = str.toLowerCase().split(' ');
-    for (var i = 0; i < str.length; i++) {
-      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
-    }
-    return str.join(' ');
-  }
+    const { state } = useLocation();
+    const t = state.t
+    const user = state.user
 
-    return(
-        <div className='card'>
+    
+    function titleCase(str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+          str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+        }
+        return str.join(' ');
+      }
+      return(
+
+
+            <div className='task-grid'>
+            <div className='task-container'>
+            <div className='cards'>
+                <div className='card'>
             <div className='content'>
                 <div className='content-header'>
-                    <div className='priority-dot' style={{backgroundColor: t.priority === 'critical' ? 'var(--critical)' : t.priority === 'moderate' ? 'var(--moderate)' : 'var(--intermediate'}}>
+                    <div className='priority-dot' style={{backgroundColor: state.t.priority === 'critical' ? 'var(--critical)' : state.t.priority === 'moderate' ? 'var(--moderate)' : 'var(--intermediate'}}>
                     </div>
-                    <div className='task-tag'>{t.priority === 'critical' ? 'critical' : t.priority === 'moderate' ? 'moderate' : t.priority === 'intermediate' ? 'intermediate' : null}
+                    <div className='task-tag'>{state.t.priority === 'critical' ? 'critical' : state.t.priority === 'moderate' ? 'moderate' : state.t.priority === 'intermediate' ? 'intermediate' : null}
                     </div>                              
-                    <div className='date-created'>Date Created: {t.created_at}</div>
+                    <div className='date-created'>Date Created: {state.t.created_at}</div>
                 </div>
                 <div className='content-body'>
                     <ul className='task-details'>
-                        <li className='category'>Category: <a href='' className='task-links'>{titleCase(t.category)}</a></li>
-                        <li className='subject'>Subject: {titleCase(t.subject)}</li>
-                        <li className='description'>{t.description}</li>
+                        <li className='category'>Category: <a href='' className='task-links'>{titleCase(state.t.category)}</a></li>
+                        <li className='subject'>Subject: {titleCase(state.t.subject)}</li>
+                        <li className='description-pg'>{state.t.description}</li>
                     </ul>
                 </div>
-                <div className='status'>{t.status === 'new' ? 'open' : t.status}</div>
+                <div className='status'>{state.t.status === 'new' ? 'open' : state.t.status}</div> 
             </div>
+            </div>
+            </div>
+            </div>
+
         </div>
-    )
+      )
 }
-    
+
 export default Task
