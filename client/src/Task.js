@@ -1,15 +1,41 @@
 import React from 'react'
 import { useLocation } from 'react-router';
 import './Task.css'
-import Navigation from './Navigation';
-import User from './User';
+import Comments from './Comments';
+import { useState, useEffect} from 'react'
 
 const Task = () => {
 
+    const [comments, setComments] = useState()
+   
     const { state } = useLocation();
-    const t = state.t
-    const user = state.user
+    
 
+    useEffect(() => {
+        fetch("/comments")
+          .then((res) => res.json())
+          .then((data) => setComments(data.filter((d) => d.task_id == state.t.id)))
+          .catch(console.error);
+    }, []);
+
+  
+    const [newComment, setNewComment] = useState('')
+     
+    const handleSubmitComment = (e) => {
+        e.preventDefault();
+        fetch('/comments', {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                comment: newComment,
+                user_id: state.user.id,
+                task_id: state.t.id
+            })
+        }) 
+    }
+    
     
     function titleCase(str) {
         str = str.toLowerCase().split(' ');
@@ -18,13 +44,14 @@ const Task = () => {
         }
         return str.join(' ');
       }
+
+   
+
       return(
-
-
             <div className='task-grid'>
             <div className='task-container'>
             <div className='cards'>
-                <div className='card'>
+                <div className='task-card'>
             <div className='content'>
                 <div className='content-header'>
                     <div className='priority-dot' style={{backgroundColor: state.t.priority === 'critical' ? 'var(--critical)' : state.t.priority === 'moderate' ? 'var(--moderate)' : 'var(--intermediate'}}>
@@ -41,6 +68,18 @@ const Task = () => {
                     </ul>
                 </div>
                 <div className='status'>{state.t.status === 'new' ? 'open' : state.t.status}</div> 
+                <div className='task-comments'>
+                {comments ? comments.map((c) => 
+                    
+                        <Comments c={c}/>
+                ) : null}
+                <div>
+                <form className='add-comment'onSubmit={handleSubmitComment}>
+                    <textarea type="text" name="comment" onChange={(e) => setNewComment(e.target.value)}></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            </div>
             </div>
             </div>
             </div>

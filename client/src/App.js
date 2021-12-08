@@ -12,6 +12,7 @@ import TaskGrid from './TaskGrid';
 const App = () => {
 
   const [user, setUser] = useState(null);
+  
 
   useEffect(() => {
     fetch("/self").then((res) => {
@@ -20,6 +21,8 @@ const App = () => {
       }
     });
   }, []);
+
+  
 
   function handleLogout() {
     fetch("/logout", {

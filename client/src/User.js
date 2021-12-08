@@ -8,7 +8,7 @@ const User = ( {user, handleLogout} ) => {
         <div className='user'>
             <div className='user-fix'>       
                 <div className='avi-box'>
-                    <div><img className='avi' src={`${user.avi}`}></img></div>
+                    <div><img className='avi' alt='avi' src={`${user.avi}`}></img></div>
                     <div className='user-name'>{user.name}</div>
                     <div className='company'>{user.company} </div>
                 </div>

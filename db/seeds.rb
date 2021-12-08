@@ -27,7 +27,7 @@ end
 end
 
 100.times do 
-    random_user = User.all.sample.name
+    random_user = User.all.sample.email
     Task.create(
         subject: Faker::Hacker.noun,
         priority: priority.sample,

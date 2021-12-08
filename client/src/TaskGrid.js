@@ -24,6 +24,8 @@ function handleFilterClick(x) {
        setFilterBy(x);
     }else if(x==='new'){
         setFilterBy(x);
+    }else if(x===user.email){
+        setFilterBy(x)
     }else{
         setFilterBy(x);
     }  
@@ -34,20 +36,19 @@ const filteredTasks = tasks.filter((task) => {
         return task.status === filterBy
     }else if(filterBy === 'closed'){
         return task.status === filterBy
-    }else{
+    }else if(filterBy === user.email){
+        return task.assigned_to === filterBy && task.status === 'claimed'
+    }else{ 
         return task.status !== filterBy
     }
 });
 
-    {/* document.getElementById('closed').style.backgroundColor = 'var(--primary)'
-    document.getElementById('open').style.backgroundColor = 'var(--secondary)'
-    document.getElementById('open').style.backgroundColor = 'var(--primary)'
-    document.getElementById('closed').style.backgroundColor = 'var(--secondary)' */}    
+ 
 
 
     return(
         <div className='task-grid'>
-            <Filter handleFilterClick={handleFilterClick} />
+            <Filter handleFilterClick={handleFilterClick} user={user}/>
             <div className='task-container'>
                 
                 <div className='cards'>
@@ -58,7 +59,7 @@ const filteredTasks = tasks.filter((task) => {
                 }}
                 style={{ textDecoration: 'none', color: 'var(--font)' }}
                     >
-                        <Tasks t={t} key={t.id}/>
+                        <Tasks t={t} key={t.id} user={user}/>
                     </Link>
                 )}
                 </div>

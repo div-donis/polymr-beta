@@ -1,7 +1,7 @@
 import React from "react"
 
 
-const Tasks = ({t}) => {
+const Tasks = ({user,t}) => {
 
      
     function titleCase(str) {

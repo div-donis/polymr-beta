@@ -17,7 +17,7 @@
   --secondary: rgb(255, 255, 255);
   --alt: #07354d;
   --alt2: #ca1551;
-  --font: #000;
+  --font: rgb(26, 26, 26);
   --tags: 'Roboto Mono', monospace;
   --sans: 'Source Sans Pro', sans-serif;
 }
