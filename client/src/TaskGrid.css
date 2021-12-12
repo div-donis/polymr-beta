@@ -148,4 +148,7 @@
     top: 5px;
     transform: rotate(180deg);
 }
-
+.tdl{
+    color: var(--font);
+    text-decoration: none;
+}

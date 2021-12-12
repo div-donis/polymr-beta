@@ -1,9 +1,10 @@
 import React from "react"
 import './TaskGrid.css'
 import Tasks from './Tasks'
-import Filter from './Filter'
+import Task from './Task'
+import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from 'react'
-import { Link }from 'react-router-dom'
+
 
 const TaskGrid = ( {user} ) => {
 
@@ -16,8 +17,7 @@ useEffect(() => {
       .then((data) => setTasks(data))
       .catch(console.error);
 }, []);
-console.log(tasks)
-tasks.sort((a, b) => (a.priority > b.priority) ? 1 : -1)
+
 
 function handleFilterClick(x) {
     if(x==='closed'){
@@ -31,7 +31,7 @@ function handleFilterClick(x) {
     }  
 }
 
-const filteredTasks = tasks.filter((task) => {
+const filteredTasks = tasks?.filter((task) => {
     if(filterBy === 'new'){
         return task.status === filterBy
     }else if(filterBy === 'closed'){
@@ -43,28 +43,13 @@ const filteredTasks = tasks.filter((task) => {
     }
 });
 
- 
 
 
-    return(
-        <div className='task-grid'>
-            <Filter handleFilterClick={handleFilterClick} user={user}/>
-            <div className='task-container'>
-                
-                <div className='cards'>
-                {filteredTasks.map((t) => 
-                    <Link 
-                    to={{pathname: `/task/${t.id}`,
-                    state: {t, user}
-                }}
-                style={{ textDecoration: 'none', color: 'var(--font)' }}
-                    >
-                        <Tasks t={t} key={t.id} user={user}/>
-                    </Link>
-                )}
-                </div>
-            </div>
-        </div>
+    return(  
+            <Routes>
+                <Route exact path='/' element={<Tasks user={user} handleFilterClick={handleFilterClick} filteredTasks={filteredTasks} />} />
+                <Route path='/:id' element={<Task user={user} tasks={tasks} />} />
+            </Routes>
     )
 }
 

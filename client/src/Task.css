@@ -15,22 +15,6 @@
     font-family: var(--sans);
     font-size: 16px;
 }
-.comment-content{
-    padding: 0 40px;
-}
-.comment-img img{
-    width: 33px;
-    height: 33px;
-    border-radius: 50%;
-}
-.comment-user{
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-    font-size: 13px;
-    font-family: var(--tags);
-}
 .task-card{
     padding: 28px 0;
     justify-self: center;
@@ -44,7 +28,6 @@
 }
 .add-comment textarea{
     display: inline-block;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 0; 
     width: 90%;
     height: 107px;
@@ -53,11 +36,56 @@
     resize: none;
     
 }
-.add-comment button{
+.add-comment input{
     display: inline-block;
     color: var(--secondary);
     background-color: var(--bayloo);
     border: none;
     width: 10%;
-    height: 107px;
+    height: 109px;
+}
+.comment-img{
+    display: inline;
+}
+.comment-img img{
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+}
+.comment-name{
+    margin-left: 6px;
+    font-size: 13px;
+    display: inline;
+    font-family: var(--tags);
+    position: relative;
+    bottom: 5px;
+}
+.comment-content{
+    padding: 0 40px;
+    word-wrap: break-word;
+    min-height: 20px;
+}
+.delete-btn{
+    color: var(--font);
+    display: block;
+    position: relative;
+    float: right;
+}
+.edit-comment{
+    display: flex;
+}
+.edit-comment textarea{
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 16px;
+    width: 528px;
+    height: 66px;
+    box-sizing: border-box;
+    resize: none;
+}
+.edit-comment input{
+    display: inline-block;
+    color: var(--secondary);
+    background-color: var(--bayloo);
+    border: none;
 }

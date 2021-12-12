@@ -1,7 +1,6 @@
 import './App.css';
-import LogIn from './LogIn';
-import Task from './Task';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import LogIn from './LogIn';  
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import Navigation from './Navigation';
 import User from './User';
@@ -12,7 +11,7 @@ import TaskGrid from './TaskGrid';
 const App = () => {
 
   const [user, setUser] = useState(null);
-  
+
 
   useEffect(() => {
     fetch("/self").then((res) => {
@@ -22,7 +21,7 @@ const App = () => {
     });
   }, []);
 
-  
+
 
   function handleLogout() {
     fetch("/logout", {
@@ -37,20 +36,15 @@ const App = () => {
   
 
   if (user) {
-    console.log(user)
     return(
       <div className="App">
         <Navigation />
         <BrowserRouter>
-        <Redirect to='/tasks'/>
-          <Switch>
-            <Route path='/tasks'>    
-              <TaskGrid user={user}/>
-            </Route>
-            <Route name='task' path="/task/:id">
-              <Task />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Navigate to="/tasks" />} />
+            <Route path="/signin" element={<Navigate to="/tasks" />} />
+            <Route path='/tasks/*' element={<TaskGrid user={user}/>} />   
+          </Routes>
         </BrowserRouter>
         <User handleLogout={handleLogout} user={user}/>
       </div>
@@ -58,10 +52,10 @@ const App = () => {
   } else {
     return( 
       <BrowserRouter>
-      <Redirect to='/signin'/>
-        <Route path='/signin'> 
-          <LogIn onLogin={setUser} />
-        </Route>
+        <Routes>
+          <Route path="/" element={<Navigate to="/signin" />} />
+          <Route path='/signin' element={<LogIn onLogin={setUser} />} /> 
+        </Routes>
       </BrowserRouter>
     )
   }

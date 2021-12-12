@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
+    comment = Comment.find_by(id: params[:id])
     if comment.update(comment_params)
       render json: comment
     else
@@ -39,7 +40,12 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    comment.destroy
+    comment = Comment.find_by(id: params[:id])
+    if comment 
+      comment.destroy
+    else
+      render json: { error: "comment not found" }, status: :not_found
+    end
   end
 
   private

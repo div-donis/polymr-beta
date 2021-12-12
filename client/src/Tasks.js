@@ -1,7 +1,10 @@
 import React from "react"
+import Filter from './Filter'
+import { Link } from 'react-router-dom'
 
 
-const Tasks = ({user,t}) => {
+
+const Tasks = ({user,filteredTasks, handleFilterClick}) => {
 
      
     function titleCase(str) {
@@ -14,27 +17,37 @@ const Tasks = ({user,t}) => {
 
 
 
-
-
     return(
-        <div className='card'>
-            <div className='content'>
-                <div className='content-header'>
-                    <div className='priority-dot' style={{backgroundColor: t.priority === 'critical' ? 'var(--critical)' : t.priority === 'moderate' ? 'var(--moderate)' : 'var(--intermediate'}}>
-                    </div>
-                    <div className='task-tag'>{t.priority === 'critical' ? 'critical' : t.priority === 'moderate' ? 'moderate' : t.priority === 'intermediate' ? 'intermediate' : null}
-                    </div>                              
-                    <div className='date-created'>Date Created: {t.created_at}</div>
+        <div className='task-grid'>
+            {filteredTasks ? <div className='task-container'>      
+                <div className='cards'>
+                    <Filter user={user} handleFilterClick={handleFilterClick}/>
+                    {filteredTasks.map((t) => 
+                    
+                        <div  key={t.id} className='card'>
+                            <div className='content'>
+                                <div className='content-header'>
+                                    <div className='priority-dot' style={{backgroundColor: t.priority === 'critical' ? 'var(--critical)' : t.priority === 'moderate' ? 'var(--moderate)' : 'var(--intermediate'}}>
+                                    </div>
+                                    <div className='task-tag'>{t.priority === 'critical' ? 'critical' : t.priority === 'moderate' ? 'moderate' : t.priority === 'intermediate' ? 'intermediate' : null}
+                                    </div>                              
+                                    <div className='date-created'>Date Created: {t.created_at}</div>
+                                </div>
+                                    <div className='content-body'>
+                                        <ul className='task-details'>
+                                            <li className='category'>Category: <u className='task-links'>{titleCase(t.category)}</u></li>
+                                            <Link className='tdl' to={`/tasks/${t.id}`}>
+                                                <li className='subject'>Subject: {titleCase(t.subject)}</li>
+                                                <li className='description'>{t.description}</li>
+                                            </Link>
+                                        </ul>
+                                    </div>
+                                <div className='status'>{t.status === 'new' ? 'open' : t.status}</div>
+                            </div>
+                        </div>
+                    )}
                 </div>
-                <div className='content-body'>
-                    <ul className='task-details'>
-                        <li className='category'>Category: <a href='' className='task-links'>{titleCase(t.category)}</a></li>
-                        <li className='subject'>Subject: {titleCase(t.subject)}</li>
-                        <li className='description'>{t.description}</li>
-                    </ul>
-                </div>
-                <div className='status'>{t.status === 'new' ? 'open' : t.status}</div>
-            </div>
+            </div> : null}  
         </div>
     )
 }

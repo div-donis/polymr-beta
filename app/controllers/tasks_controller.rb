@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    tasks = Task.all
+    tasks = Task.all.sort_by { |t| t.priority}
 
     render json: tasks
   end
