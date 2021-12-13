@@ -12,7 +12,6 @@ const App = () => {
 
   const [user, setUser] = useState(null);
 
-
   useEffect(() => {
     fetch("/self").then((res) => {
       if (res.ok) {
@@ -23,15 +22,7 @@ const App = () => {
 
 
 
-  function handleLogout() {
-    fetch("/logout", {
-      method: "DELETE",
-    }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    })
-  }
+
 
   
 
@@ -43,10 +34,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Navigate to="/tasks" />} />
             <Route path="/signin" element={<Navigate to="/tasks" />} />
-            <Route path='/tasks/*' element={<TaskGrid user={user}/>} />   
+            <Route path='/tasks/*' element={<><TaskGrid user={user}/><User setUser={setUser} user={user}/></>} />   
           </Routes>
         </BrowserRouter>
-        <User handleLogout={handleLogout} user={user}/>
       </div>
     )
   } else {

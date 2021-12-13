@@ -1,9 +1,22 @@
 import React from 'react'
 import './User.css'
+import { useNavigate } from 'react-router-dom'
 
-const User = ( {user, handleLogout} ) => {
-        
-    
+const User = ( { user, setUser} ) => {
+    const navigate = useNavigate()
+
+    function handleLogout() {
+        fetch("/logout", {
+          method: "DELETE",
+        }).then((r) => {
+          if (r.ok) {
+            setUser(null);
+            navigate('/signin');
+            window.location.reload()
+          }
+        })
+      }
+          
         return (
         <div className='user'>
             <div className='user-fix'>       

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import './LogIn.css'
 
 const LogIn = ( {onLogin } ) => {
     const [email, setEmail] = useState("");
@@ -18,14 +19,16 @@ const LogIn = ( {onLogin } ) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div className='login'>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 }
 

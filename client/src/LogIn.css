@@ -1,0 +1,19 @@
+.login{
+    display: flex;
+    justify-content: center;
+    position:fixed;
+    width: 100%;
+    height: 100%;
+}
+.login form{
+    display: block;
+    position: relative;
+    align-self: center;
+}
+.login button{
+    display: inline-block;
+    color: var(--secondary);
+    background-color: var(--bayloo);
+    border: none;
+    height: 21px;
+}
