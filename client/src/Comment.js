@@ -6,7 +6,7 @@ import {
 import { useState } from 'react'
 import EditComment from './EditComment'
 
-const  Comment = ( {c, user, handleDelete, users, id, setEditedComment, editedComment, handleUpdatedComment} ) => {
+const  Comment = ( {c, user, handleDelete, id, setEditedComment, editedComment, handleUpdatedComment} ) => {
 
     const [isEditing, setIsEditing] = useState(false)
 
@@ -17,7 +17,7 @@ const  Comment = ( {c, user, handleDelete, users, id, setEditedComment, editedCo
             body: JSON.stringify({
                 content: editedComment,
                 user_id: user.id,
-                task_id: parseInt(id)
+                task_id: id
             }), 
             headers: {
                 "Content-type": "application/json"
@@ -38,15 +38,13 @@ const  Comment = ( {c, user, handleDelete, users, id, setEditedComment, editedCo
            
             <div className='task-comment'>
                 <div className='comment-user'>
-                    {users?.filter((u) => u.id === parseInt(c.user_id) ).map((u) => 
-                        <div key={u.id}>
-                            <div className='comment-img'>
-                                <img alt='avi' src={`${u.avi}`}></img>
-                            </div> 
-                            <div className='comment-name'>{u.name}</div>
-                            <div className='delete-btn'>{user.id === parseInt(c.user_id) ? <><FiEdit onClick={handleEditing} /><FiDelete onClick={() => handleDelete(c.id)}/></> : null}</div>
-                        </div>
-                    )}
+                    <div>
+                        <div className='comment-img'>
+                            <img alt='avi' src={`${c.user.avi}`}></img>
+                        </div> 
+                        <div className='comment-name'>{c.user.name}</div>
+                        <div className='delete-btn'>{user.id === c.user.id ? <><FiEdit onClick={handleEditing} /><FiDelete onClick={() => handleDelete(c.id)}/></> : null}</div>
+                    </div>
                 </div>
                 <div className='comment-content'>{isEditing ? <EditComment handleEditComment={handleEditComment} setEditedComment={setEditedComment} c={c}/> : c.content }</div>
             </div>

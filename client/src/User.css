@@ -1,9 +1,12 @@
 .user{
     display: block;
-    position: sticky;
-    width: 297px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 197px;
     box-sizing: inherit;
-    border-left: 1px solid rgba(0, 0, 0, 0.1)
+    text-align: center;
+    color: var(--font);
 }
 .user-fix{
     width: inherit;
@@ -12,17 +15,17 @@
     flex-direction: column;
     height: 100vh;
     justify-content: space-between;
+    border-left: 1px solid var(--border);
 }
 .avi-box{
-    
-    margin: 0 auto;
-    width: 230px;
+    margin: 30px auto 0 auto;
+    width: 130px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 218px;
     font-family: var(--sans);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    
 }
 .avi{
     height: 64px;
@@ -31,18 +34,12 @@
 }
 .user-name{
     font-size: 16.8px;
+    font-variant: small-caps;
+    font-weight: 600;
 }
 .company{
     font-size: 14px;
     font-style: italic;
-}
-.nav-options{
-    text-align: left;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    font-weight: 300;
 }
 .user-controls{
     width: 100%;
@@ -56,8 +53,23 @@
     padding: 6px 0;
     font-family: var(--sans);
     border-radius: 50px;
-    color: var(--secondary);
+    color: #fff;
     width: 75px;
     background-color: var(--bayloo);
     font-size: 16px;
+}
+.theme-toggle{
+    padding: 6px 0;
+    width: 197px;
+    position: fixed;
+    left: 10px;
+    bottom: 20px;
+    user-select: none;
+}
+.mode-icon{
+    position: relative;
+    top: 5.5px;
+    font-size: 24px;
+    transition: ease all .5s;
+    user-select: none;
 }

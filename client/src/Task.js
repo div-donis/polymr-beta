@@ -56,7 +56,7 @@ const Task = ( {tasks, user} ) => {
                         <li className='description-pg'>{t.description}</li>
                     </ul>
                 </div>
-                <div className='status'>{t.status === 'new' ? 'open' : t.status}</div> 
+                <div className='status'>{t.status === 'new' ? 'new' : t.status}</div> 
                 <div className='task-comments'>
                 
                     

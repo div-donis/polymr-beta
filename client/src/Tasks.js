@@ -1,10 +1,17 @@
 import React from "react"
 import Filter from './Filter'
 import { Link } from 'react-router-dom'
+import  { useState }  from 'react'
 
 
 
-const Tasks = ({user,filteredTasks, handleFilterClick}) => {
+const Tasks = ({user, filteredTasks, handleFilterClick}) => {
+    const [filterDate, setFilterDate] = useState(false)
+    const [filterPriority, setFilterPriority] = useState(false)
+
+
+    
+        
 
      
     function titleCase(str) {
@@ -15,15 +22,69 @@ const Tasks = ({user,filteredTasks, handleFilterClick}) => {
         return str.join(' ');
     }
 
+    const sortByPriority = () => {
+        if(filterPriority === false){
+            filteredTasks.sort(function (x, y) {     
+                let a = x.priority,         
+                b = y.priority   
+                return a === b ? 0 : a > b ? 1 : -1 
+            })
+        }else{
+            filteredTasks.sort(function (x, y) {     
+                let b = x.priority,         
+                a = y.priority   
+                return a === b ? 0 : a > b ? 1 : -1 
+            })
+        }   
+    }
+
+    const handleTogglePriority = () => {
+        setFilterPriority((filterPriority) => !filterPriority)
+        sortByPriority()
+        const x = document.getElementById('priority-arrow')
+        if (filterPriority === true){
+            x.style.transform = 'rotate(-180deg)'
+        }else{
+            x.style.transform = 'rotate(0deg)'
+        }
+    }
+
+    const sortByDate = () => {
+        if(filterDate === false){
+            filteredTasks.sort(function (x, y) {     
+                let a = x.created_at,         
+                b = y.created_at   
+                return a === b ? 0 : a > b ? 1 : -1 
+            })
+        }else{
+            filteredTasks.sort(function (x, y) {     
+                let b = x.created_at,         
+                a = y.created_at   
+                return a === b ? 0 : a > b ? 1 : -1 
+            })
+        }   
+    }
+
+    const handleToggleDate = () => {
+        setFilterDate((filterDate) => !filterDate)
+        sortByDate()
+        const x = document.getElementById('date-arrow')
+        if (filterDate === false){
+            x.style.transform = 'rotate(-180deg)'
+        }else{
+            x.style.transform = 'rotate(0deg)'
+        }
+    }
 
 
     return(
         <div className='task-grid'>
             {filteredTasks ? <div className='task-container'>      
                 <div className='cards'>
-                    <Filter user={user} handleFilterClick={handleFilterClick}/>
-                    {filteredTasks.map((t) => 
-                    
+                    <Filter handleTogglePriority={handleTogglePriority} handleToggleDate={handleToggleDate} handleFilterClick={handleFilterClick}/>
+                    <div className='card-container'>
+                    {filteredTasks.length > 0 ?
+                    filteredTasks.map((t) =>   
                         <div  key={t.id} className='card'>
                             <div className='content'>
                                 <div className='content-header'>
@@ -42,10 +103,18 @@ const Tasks = ({user,filteredTasks, handleFilterClick}) => {
                                             </Link>
                                         </ul>
                                     </div>
-                                <div className='status'>{t.status === 'new' ? 'open' : t.status}</div>
+                                <div className='status'>{t.status === 'new' ? 'new' : t.status}</div>
                             </div>
                         </div>
-                    )}
+                    )
+                    : 
+                    <div className='no-card'>
+                        <div className='content'>
+                            Nothing to see here...
+                        </div>
+                    </div>
+                    }
+                    </div>
                 </div>
             </div> : null}  
         </div>

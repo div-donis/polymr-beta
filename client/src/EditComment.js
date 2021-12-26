@@ -4,7 +4,7 @@ const EditComment = ({ setEditedComment, c, handleEditComment}) => {
 
     return(
         <form className='edit-comment'>
-            <textarea defaultValue={`${c.content}`} onChange={(e) => setEditedComment(e.target.value)}></textarea>
+            <textarea defaultValue={`${c.content}`} autofocus onChange={(e) => setEditedComment(e.target.value)}></textarea>
             <input type='submit' onClick={handleEditComment}></input>
         </form>
     )

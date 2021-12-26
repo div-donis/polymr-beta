@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :bio
       t.string :company
       t.boolean :admin
-
+      t.integer :account_id
       t.timestamps
     end
   end

@@ -9,8 +9,8 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :assigned_to
       t.string :category
       t.string :description
-      t.string :user_id
-      t.string :account_id
+      t.integer :user_id
+      t.integer :account_id
 
       t.timestamps
     end

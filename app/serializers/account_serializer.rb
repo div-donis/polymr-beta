@@ -1,3 +1,3 @@
 class AccountSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description
+  attributes :id, :name, :image, :description, :tasks
 end

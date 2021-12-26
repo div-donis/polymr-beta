@@ -1,8 +1,12 @@
 import React from 'react'
 import './User.css'
 import { useNavigate } from 'react-router-dom'
+import {
+  WiMoonAltWaningCrescent6,
+  WiMoonAltWaxingCrescent1
+} from "react-icons/wi";
 
-const User = ( { user, setUser} ) => {
+const User = ( { user, setUser, toggleDarkMode, darkMode} ) => {
     const navigate = useNavigate()
 
     function handleLogout() {
@@ -16,7 +20,7 @@ const User = ( { user, setUser} ) => {
           }
         })
       }
-          
+    
         return (
         <div className='user'>
             <div className='user-fix'>       
@@ -25,10 +29,14 @@ const User = ( { user, setUser} ) => {
                     <div className='user-name'>{user.name}</div>
                     <div className='company'>{user.company} </div>
                 </div>
+                
                 <div className='user-controls'>
-                    <div className='log-out' onClick={handleLogout}>
-                        Log Out
-                    </div>
+                  <div className="theme-toggle" onClick={toggleDarkMode}>
+                    {darkMode ? <><WiMoonAltWaningCrescent6 className='mode-icon'/> Light Mode</> : <><WiMoonAltWaxingCrescent1 className='mode-icon'/> Dark Mode</>}
+                  </div>
+                  <div className='log-out' onClick={handleLogout}>
+                      Log Out
+                  </div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,7 @@
 .login{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     position:fixed;
     width: 100%;
     height: 100%;
@@ -10,10 +11,36 @@
     position: relative;
     align-self: center;
 }
+.login input{
+    color: var(--font);
+    position: relative;
+    resize: none;
+    font-family: var(--sans);
+    font-size: 16px;
+    background-color: var(--secondary);
+    border: solid 1px var(--font);
+}
+.login input:focus{
+    outline: none;
+}
+
 .login button{
     display: inline-block;
-    color: var(--secondary);
+    color: #fff;
     background-color: var(--bayloo);
     border: none;
-    height: 21px;
+    height: 26px;
+    position: relative;
+    bottom: 2px;   
+}
+.login-error{
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    transform: translateY(27px);
+    color: var(--font);
+    text-align: center;
+    font-family: var(--sans);
+    display: inline-block;
 }

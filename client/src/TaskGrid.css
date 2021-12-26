@@ -1,7 +1,8 @@
 .task-grid{
     display: block;
     margin: 0 auto;
-
+    text-align: center;
+  
 }
 .task-container{
     color: var(--font);
@@ -21,7 +22,19 @@
     background-color: var(--secondary);
     width: 678px;
     height: 198px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--border);
+}
+.card-container{
+    margin-top: 70px;
+    display: grid;
+}
+.no-card{
+    padding: 28px 0;
+    justify-self: center;
+    background-color: var(--secondary);
+    width: 678px;
+    height: 198px;
+    font-family: var(--sans);
 }
 .content-header{
     width: 100%;
@@ -81,72 +94,76 @@
 }
 .filter{
     color: var(--font);
-    width: 678px;
-    margin: 0 auto;
+    margin-top: 47px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 .filters{
+    position: fixed;
     line-height: 70px;
     height: 70px;
     font-family: var(--sans);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 678px;
+    margin: 0 auto;
 }
 .filters-child{
     width: 100%;
     font-weight: 600;
-    transition: ease all 0.2;
-}
-#all{
-    color: var(--dandy);
-    transition: all .4s ease;
-    -webkit-transition: all .6s ease;
-    border-bottom: solid 5px var(--dandy);
-}
-#all:hover{
-    background-color: var(--dandy-fade);
+    transition: ease border 0.2s;
+    background-color: var(--secondary);
+    user-select: none;
 }
 #self{
     color: var(--bayloo);
-    transition: all .4s ease;
-    -webkit-transition: all .6s ease;
+    transition: border .2s ease;
+    -webkit-transition: border .2s ease;
     border-bottom: solid 5px var(--bayloo);
 }
 #self:hover{
-    background-color: var(--bayloo-fade);
+    border-bottom: solid 5px var(--secondary);
 }
 #new{
     color: var(--moderate);
-    transition: all .4s ease;
-    -webkit-transition: all .6s ease;
+    transition: border .2s ease;
+    -webkit-transition: border .2s ease;
     border-bottom: solid 5px var(--moderate);
 }
 #new:hover{
-    background-color: var(--moderate-fade);
+    border-bottom: solid 5px var(--secondary);
 }
-#closed{
+#critical{
     color: var(--critical);
-    transition: all .4s ease;
-    -webkit-transition: all .6s ease;
+    transition: border .2s ease;
+    -webkit-transition: border .2s ease;
     border-bottom: solid 5px var(--critical);
 }
-#closed:hover{
-    background-color: var(--critical-fade);
+#critical:hover{
+    border-bottom: solid 5px var(--secondary);
 }
 #date{
     color: var(--intermediate);
-    transition: all .4s ease;
-    -webkit-transition: all .6s ease;
+    transition: border .2s ease;
+    -webkit-transition: border .2s ease;
     border-bottom: solid 5px var(--intermediate);
 }
 #date:hover{
-    background-color: var(--intermediate-fade);
+    border-bottom: solid 5px var(--secondary);
 }
-.date-arrow{
+#priority-arrow{
     position: relative;
     font-size: 20px;
     top: 5px;
-    transform: rotate(180deg);
+    transition: all ease 0.3s;
+}
+#date-arrow{
+    position: relative;
+    font-size: 20px;
+    top: 5px;
+    transition: all ease 0.3s;
 }
 .tdl{
     color: var(--font);

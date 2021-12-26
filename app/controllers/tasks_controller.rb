@@ -3,7 +3,16 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     tasks = Task.all.sort_by { |t| t.priority}
+    render json: tasks
+  end
 
+  def tasks_by_account
+    tasks = Task.all.filter { |t| t.status != 'closed'}
+    render json: tasks
+  end
+
+  def closed_tasks_by_account
+    tasks = Task.all.filter { |t| t.status == 'closed'}
     render json: tasks
   end
 
@@ -11,7 +20,7 @@ class TasksController < ApplicationController
   def show
     task = Task.find_by(id: params[:id])
     if task
-      render json: task
+      render json: task, include: :comments
     else
       render json: { error: "task not found" }, status: :not_found
     end
@@ -40,6 +49,12 @@ class TasksController < ApplicationController
   # DELETE /tasks/1
   def destroy
     task.destroy
+  end
+
+  def show_comments
+    task = Task.find(params[:task_id])
+    comments = task.comments
+    render json: comments, include: :task
   end
 
   private

@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
 :root {
-  --critical: #fb4d3d;
+  --critical: #ff2929;
   --critical-fade: #fdd7d7;
-  --intermediate: #345995;
-  --intermediate-fade: #bfd9ff;
+  --intermediate: #5590e9;
+  --intermediate-fade: #d6e0ff;
   --moderate: #08ada0;
   --moderate-fade: #d6f7f3;
   --dandy: #a32e86;
@@ -20,25 +20,28 @@
   --font: rgb(26, 26, 26);
   --tags: 'Roboto Mono', monospace;
   --sans: 'Source Sans Pro', sans-serif;
+  --border: rgba(0, 0, 0, 0.1);
 }
 [data-theme="light"] {
-  --primary: #f2f2f2;
+  --primary: #f3f3f3;
   --secondary: rgb(255, 255, 255);
   --font: #000;
   --alt-font: #d3d3d3;
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   --shadow-hover: rgba(14, 30, 37, 0.03) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.16) 0px 2px 16px 0px;
+  --border: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] {
-  --secondary: rgb(17, 17, 17);
-  --primary: #1a1a1a;
-  --font: #d3d3d3;
+  --secondary: rgb(22, 22, 22);
+  --primary: #2e2e2e;
+  --font: #e4e4e4;
   --alt-font: #3b3b3b;
   --shadow: rgba(3, 3, 3, 0.692) 0px 0px 4px;
   --shadow-hover: rgba(32, 32, 32, 0.726) 0px 0px 6px,
     rgba(0, 0, 0, 0.63) 2px 2px 4px;
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 body {

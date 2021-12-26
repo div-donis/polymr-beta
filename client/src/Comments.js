@@ -5,7 +5,6 @@ import Comment from './Comment'
 
 const Comments = ( {id, user, refresh} ) => {
 
-    const [users, setUsers] = useState()
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState('')
     const [editedComment, setEditedComment] = useState('')
@@ -20,21 +19,12 @@ const Comments = ( {id, user, refresh} ) => {
         refresh();
     }
 
-   
-
     useEffect(() => {
-           fetch("/comments")
+           fetch(`/tasks/${id}/comments`)
              .then((res) => res.json())
              .then((data) => setComments(data))
              .catch(console.error);
        }, []);
-
-    useEffect(() => {
-          fetch("/users")
-            .then((res) => res.json())
-            .then((data) => setUsers(data))
-            .catch(console.error);
-      }, []);
 
     const handleSubmitComment = (e) => {
         e.preventDefault();
@@ -69,7 +59,7 @@ const Comments = ( {id, user, refresh} ) => {
         handleRemoveComment(e)
     }
 
-     const filteredComments = comments.filter((c) => c.task_id === id )
+     const filteredComments = comments.filter((c) => c.task_id === parseInt(id))
      
      function handleUpdatedComment(id) {
         filteredComments.find(item => {
@@ -80,9 +70,9 @@ const Comments = ( {id, user, refresh} ) => {
     return(
         <div>
             { filteredComments ? 
-            filteredComments.map((c) => <Comment key={c.id} editedComment={editedComment} handleUpdatedComment={handleUpdatedComment} setEditedComment={setEditedComment} users={users} id={id} refresh={refresh} c={c} handleDelete={handleDelete} user={user}/>) : null }
+            filteredComments.map((c) => <Comment key={c.id} editedComment={editedComment} handleUpdatedComment={handleUpdatedComment} setEditedComment={setEditedComment} id={id} refresh={refresh} c={c} handleDelete={handleDelete} user={user}/>) : null }
             <form className='add-comment'onSubmit={handleSubmitComment}>
-                <textarea type="text" name="comment" onChange={(e) => setNewComment(e.target.value)}></textarea>
+                <textarea type="text" name="comment" autofocus onChange={(e) => setNewComment(e.target.value)}></textarea>
                 <input type="submit" value='Send'></input>
             </form>
         </div>

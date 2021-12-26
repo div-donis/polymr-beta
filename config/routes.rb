@@ -4,10 +4,19 @@ Rails.application.routes.draw do
   resources :comments
   resources :accounts
   resources :users
+
   post "/login", to: "sessions#create" 
+
   get "/self", to: "users#show" 
+
   delete "/logout", to: "sessions#destroy" 
-  # Routing logic: fallback requests for React Router.
-  # Leave this here to help deploy your app later!
+
+  get '/tasks/:task_id/comments', to: 'tasks#show_comments'
+
+  get '/accounts/:account_id/tasks', to: 'tasks#tasks_by_account'
+
+  get '/accounts/:account_id/closed_tasks', to: 'tasks#closed_tasks_by_account'
+  
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  
 end

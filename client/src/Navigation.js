@@ -1,25 +1,32 @@
 import React from "react";
 import './Navigation.css'
-import { 
-    ImHome,
-    ImTable2,
-    ImStatsBars2,
-    ImAddressBook,
-    ImUsers
- } from 'react-icons/im'
+import {
+    BsHouseFill,
+    BsGraphUp,
+    BsPencilSquare,
+    BsFillBellFill
+}
+from 'react-icons/bs'
+
+import { Link } from 'react-router-dom'
 
 const Navigation = () => {
     return(
-        <div className='navigation'>
-            <div className='nav-fix'>
-                <div className='nav-options'>
-                    <div className='nav-link' id='home-tab'><ImHome className='nav-icons'/> Home</div>
-                    <div className='nav-link' id='task-grid-tab'><ImTable2 className='nav-icons'/> Task Grid</div>
-                    <div className='nav-link' id='reports-tab'><ImStatsBars2 className='nav-icons'/> Reports</div>
-                    <div className='nav-link' id='accounts-tab'><ImAddressBook className='nav-icons'/> Accounts</div>
-                    <div className='nav-link' id='users-tab'><ImUsers className='nav-icons'/> Users</div>
-                </div>
-            </div>
+        <div className='navigation'>         
+                <nav className='nav-options'>
+                <Link 
+                    to="/tasks" 
+                    style={{textDecoration: 'none', color: 'var(--settled)'}}>
+                    <div className='nav-link' id='tasks-tab'><BsHouseFill /></div>
+                </Link>
+                    <div className='nav-link' id='reports-tab'><BsGraphUp /></div>
+                <Link 
+                    to="/tasks/create-new" 
+                    style={{textDecoration: 'none', color: 'var(--settled)'}}>
+                    <div className='nav-link' id='create-new-tab'><BsPencilSquare /></div>   
+                </Link>
+                    <div className='nav-link' id='notifications-tab'><BsFillBellFill /></div>
+                </nav>
         </div>
     )
 }

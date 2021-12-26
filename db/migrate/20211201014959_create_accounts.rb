@@ -3,7 +3,7 @@ class CreateAccounts < ActiveRecord::Migration[6.1]
     create_table :accounts do |t|
       t.string :name
       t.string :description
-
+      t.string :image
       t.timestamps
     end
   end

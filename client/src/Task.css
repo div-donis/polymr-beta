@@ -24,7 +24,6 @@
 .add-comment{
     display: flex;
     width: 678px;
-  
 }
 .add-comment textarea{
     display: inline-block;
@@ -34,15 +33,20 @@
     font-size: 16px;
     font-family: var(--sans);
     resize: none;
-    
+    background-color: var(--secondary);
+    color: var(--font);
+}
+.add-comment textarea:focus{
+    outline: none;
 }
 .add-comment input{
     display: inline-block;
-    color: var(--secondary);
+    color: #fff;
     background-color: var(--bayloo);
     border: none;
     width: 10%;
     height: 109px;
+
 }
 .comment-img{
     display: inline;
@@ -75,6 +79,7 @@
     display: flex;
 }
 .edit-comment textarea{
+    color: var(--font);
     display: inline-block;
     font-family: var(--sans);
     font-size: 16px;
@@ -82,10 +87,14 @@
     height: 66px;
     box-sizing: border-box;
     resize: none;
+    background-color: var(--secondary);
+}
+.edit-comment textarea:focus{
+    outline: none;
 }
 .edit-comment input{
     display: inline-block;
-    color: var(--secondary);
+    color: #fff;
     background-color: var(--bayloo);
     border: none;
 }

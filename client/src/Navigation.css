@@ -1,33 +1,31 @@
 .navigation{
+    z-index: 2;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    min-width: 207px;
-    width: 267px;
-    height: 100vh;
+    width: 100vw;
+    height: 47px;
     box-sizing: inherit;
-    
-}
-.nav-fix{
-    margin: 0 auto;
     position: fixed;
-}
-.navigation div{
-    padding-left: 28px;
+    top: 0;
+    border-bottom: 1px solid var(--border);
 }
 .nav-options{
+    background-color: var(--secondary);
+    justify-content: space-around;
+    align-items: center;
     font-weight: 400;
-    height: 380px;
+    height: 47px;
+    width: 678px;
     color: var(--settled);
-   
+    display: flex;
+    flex-direction: row;
+}
+.nav-link{
+    text-align: center;
+    width: 169.5px;
 }
 .nav-link:hover{
     color: var(--font);
-    border-left: 5px solid var(--font);
 }
-.nav-icons{
-    display: inline;
-    position: relative;
-    top: 2px;
-    right: 2px;
-}
+

@@ -4,6 +4,6 @@ class Task < ApplicationRecord
     belongs_to :account
 
     def created_at
-       attributes['created_at'].strftime("%m/%d/%Y")
+       attributes['created_at'].strftime("%m/%d/%Y %H:%M")
     end
 end

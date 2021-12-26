@@ -1,9 +1,16 @@
 class SessionsController < ApplicationController
-    def create
+    skip_before_action :authorize, only: :create
+    
+    def create 
         user = User.find_by(email: params[:email])
-        session[:user_id] = user.id
-        render json: user
-    end   
+        if user
+          session[:user_id] = user.id
+          render json: user
+        else
+          render json: {errors: ["Invalid Email"]},
+          status: :unauthorized
+        end
+      end
 
     def destroy
         session.delete :user_id

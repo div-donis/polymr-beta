@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import './LogIn.css'
 
-const LogIn = ( {onLogin } ) => {
+const LogIn = ( { onLogin, user } ) => {
     const [email, setEmail] = useState("");
 
   function handleSubmit(e) {
@@ -15,9 +15,12 @@ const LogIn = ( {onLogin } ) => {
       body: JSON.stringify({ email }),
     })
       .then((r) => r.json())
-      .then((user) => onLogin(user));
+      .then((user) => {
+        onLogin(user) 
+      }); 
   }
-
+  
+  console.log(user)
   return (
     <div className='login'>
       <form onSubmit={handleSubmit}>
@@ -28,6 +31,7 @@ const LogIn = ( {onLogin } ) => {
         />
         <button type="submit">Login</button>
       </form>
+      <div className="login-error">{user?.errors ? user.errors : null}</div>
     </div>
   );
 }

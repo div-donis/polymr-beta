@@ -18,13 +18,14 @@ ActiveRecord::Schema.define(version: 2021_12_01_015213) do
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "task_id"
-    t.string "user_id"
+    t.integer "task_id"
+    t.integer "user_id"
     t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,8 +40,8 @@ ActiveRecord::Schema.define(version: 2021_12_01_015213) do
     t.string "assigned_to"
     t.string "category"
     t.string "description"
-    t.string "user_id"
-    t.string "account_id"
+    t.integer "user_id"
+    t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_015213) do
     t.string "bio"
     t.string "company"
     t.boolean "admin"
+    t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

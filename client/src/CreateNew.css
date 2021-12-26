@@ -1,0 +1,105 @@
+.create-new{
+    display: block;
+    margin: 0 auto;
+    padding: 28px 0;
+    justify-self: center;
+    background-color: var(--secondary);
+    width: 678px;
+    height: 198px;
+    color: var(--font);
+}
+.new-card{
+    margin-top: 47px;
+    padding: 28px 0;
+    justify-self: center;
+    background-color: var(--secondary);
+    width: 678px;
+    height: 198px;
+}
+.new-content-header{
+    width: 100%;
+    display: inline-flex;   
+}
+.new-task-details{
+    padding: 0;
+    list-style-type: none;
+    text-align: left;
+}
+.new-category{
+    font-size: 13px;
+    font-family: var(--tags);
+    margin-bottom: 6px;
+}
+.new-category select{
+    color: var(--font);
+    background-color: var(--secondary);
+    border: solid 1px var(--font);
+}
+.new-subject{
+    font-family: var(--sans);
+    font-size: 20.8px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.new-subject input{
+    background-color: var(--secondary);
+    border: solid 1px var(--font);
+    color: var(--font);
+}
+.new-task-input{
+    color: var(--font);
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 16px;
+    width: 678px;
+    min-height: 117px;
+    box-sizing: border-box;
+    resize: vertical;
+    background-color: var(--secondary);
+    outline: none;
+}
+.category-drop{
+
+}
+.priority-drop{
+    background-color: var(--secondary);
+    border: solid 1px var(--font);
+    color: var(--font);
+}
+.new-task-subject{
+    outline: none;
+}
+.new-task-tag{
+    margin-left: 2px;
+    font-family: var(--tags);
+    font-size: 13.3px;
+    padding: 1px 4px; 
+    display: inline;
+    background-color: var(--primary);
+    border-radius: 10px;
+}
+#moderate-tag:hover{
+    color: var(--secondary);
+    background-color: var(--moderate)
+}
+#intermediate-tag:hover{
+    color: var(--secondary);
+    background-color: var(--intermediate)
+}
+#critical-tag:hover{
+    color: var(--secondary);
+    background-color: var(--critical)
+}
+#moderate-active {
+    background-color: var(--moderate);
+    color: white;
+  }
+#intermediate-active {
+    background-color: var(--intermediate);
+    color: white;
+}
+  
+#critical-active {
+    background-color: var(--critical);
+    color: white;
+}
