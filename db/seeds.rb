@@ -31,7 +31,7 @@ end
         name: Faker::Name.name,
         email: 'polymr@test.me',
         username: Faker::Internet.unique.username(specifier: 3..15),
-        avi: Faker::Avatar.image,
+        avi: 'https://i.imgur.com/yAh3r57.jpg',
         bio: Faker::Lorem.sentence(word_count: 15),
         company: Faker::Company.name,
         admin: Faker::Boolean.boolean(true_ratio: 0.1),
