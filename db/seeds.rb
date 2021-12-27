@@ -23,7 +23,20 @@ end
         bio: Faker::Lorem.sentence(word_count: 15),
         company: Faker::Company.name,
         admin: Faker::Boolean.boolean(true_ratio: 0.1),
-        account_id: Faker::Number.within(range: 1..20),
+        account_id: 1,
+    )
+end
+
+1.times do
+    User.create(
+        name: Faker::Name.name,
+        email: 'polymr@test.me',
+        username: Faker::Internet.unique.username(specifier: 3..15),
+        avi: Faker::Avatar.image,
+        bio: Faker::Lorem.sentence(word_count: 15),
+        company: Faker::Company.name,
+        admin: Faker::Boolean.boolean(true_ratio: 0.1),
+        account_id: 1,
     )
 end
 
@@ -39,7 +52,7 @@ end
         category: category.sample,
         description: Faker::Lorem.sentence(word_count: 40),
         user_id: random_user.id,
-        account_id: Faker::Number.within(range: 1..20)
+        account_id: 1
     )
 end
 
@@ -56,7 +69,7 @@ end
         category: category.sample,
         description: Faker::Lorem.sentence(word_count: 40),
         user_id: assigned_user.id,
-        account_id: Faker::Number.within(range: 1..20)
+        account_id: 1
     )
 end
 
@@ -73,14 +86,14 @@ end
         category: category.sample,
         description: Faker::Lorem.sentence(word_count: 40),
         user_id: assigned_user.id,
-        account_id: Faker::Number.within(range: 1..20)
+        account_id: 1
     )
 end
 
 400.times do 
     Comment.create(
-        task_id: Faker::Number.within(range: 1..100),
-        user_id: Faker::Number.within(range: 1..100),
+        task_id: Faker::Number.within(range: 1..60),
+        user_id: Faker::Number.within(range: 1..11),
         content: Faker::Lorem.sentence(word_count: 12)
     )
 end

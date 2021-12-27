@@ -43,7 +43,7 @@ const TaskGrid = ( { user} ) => {
         }else if(filterBy === 'critical'){
             return task.priority === 'critical'
         }else{ 
-            return task.assigned_to === user.email
+            return task.assigned_to === user.username
             
         }
     });
