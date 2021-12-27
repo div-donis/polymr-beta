@@ -10,16 +10,26 @@ const Status = ({ active, name, onClick }) => {
     );
 };
 
-const CreateNew = () =>{
+const Categories = ({ active, name, onClick }) => {
+    return (
+      <div onClick={onClick} className='new-task-cat' className={active ? `cat-active` : `cat-non-active`}>
+        {name}
+      </div>
+    );
+};
 
-    const [dot, setDot] =  useState('moderate')
+const CreateNew = ({
+    dot,
+    cat,
+    setDot,
+    setCat,
+    error,
+    handleBody,
+    handleSubject,
+    submitAll}) => {
+
     const status = ['moderate', 'intermediate', 'critical'];
-    const[category, setCategory] = useState()
     const categories = ['version-control', 'database', 'feature', 'compiler', 'development', 'reports', 'account', 'miscellaneous bug']
- 
-    const handleCategory = (e) => {
-        setCategory(e)
-    }
 
     function titleCase(str) {
         str = str.toLowerCase().split(' ');
@@ -27,7 +37,9 @@ const CreateNew = () =>{
         str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
         }
         return str.join(' ');
-      }    
+    }    
+
+
 
     return(
         <div className='create-new'>
@@ -47,11 +59,19 @@ const CreateNew = () =>{
                     </div>
                         <div className='content-body'>
                             <ul className='new-task-details'>
-                                <li className='new-category'>Category:                             
+                                <li className='new-category'>Category: 
+                                {categories.map(c => (
+                                    <Categories
+                                    key={c}
+                                    name={titleCase(c)}
+                                    active={c === cat}
+                                    onClick={() => setCat(c)}
+                                    />
+                                ))}                             
                                 </li>                            
-                                    <li className='new-subject'>Subject: <input type='text' className='new-task-subject'></input></li>
-                                    <li><textarea className='new-task-input'></textarea></li>
-                      
+                                    <li className='new-subject'>Subject: <input type='text' className='new-task-subject' autoFocus onChange={(e) =>  handleSubject(e.target.value)}></input></li>
+                                    <li className='body-input'><textarea className='new-task-input' onChange={(e) =>  handleBody(e.target.value)}></textarea><input type="submit" value='Send' onClick={() => submitAll()}></input></li>
+                                    <li className='error-new-task'>{error}</li>
                             </ul>
                         </div>
                 </div>

@@ -58,6 +58,14 @@
     background-color: var(--secondary);
     outline: none;
 }
+.body-input input{
+    display: inline-block;
+    color: #fff;
+    background-color: var(--bayloo);
+    border: none;
+    width: 30%;
+    height: 49px;
+}
 .category-drop{
 
 }
@@ -103,3 +111,14 @@
     background-color: var(--critical);
     color: white;
 }
+.cat-active {
+    background-color: var(--bayloo);
+    color: white;
+}
+.error-new-task{
+    color: var(--critical);
+    font-family: var(--tags);
+    font-size: 13.3px;
+    font-weight: 600;
+}
+

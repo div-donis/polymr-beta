@@ -1,4 +1,6 @@
-
+.solo-task-grid{
+    padding-top: 47px;
+}
 .description-pg{
     font-family: var(--sans);
 }

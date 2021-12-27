@@ -72,7 +72,7 @@ const Comments = ( {id, user, refresh} ) => {
             { filteredComments ? 
             filteredComments.map((c) => <Comment key={c.id} editedComment={editedComment} handleUpdatedComment={handleUpdatedComment} setEditedComment={setEditedComment} id={id} refresh={refresh} c={c} handleDelete={handleDelete} user={user}/>) : null }
             <form className='add-comment'onSubmit={handleSubmitComment}>
-                <textarea type="text" name="comment" autofocus onChange={(e) => setNewComment(e.target.value)}></textarea>
+                <textarea type="text" name="comment" autoFocus onChange={(e) => setNewComment(e.target.value)}></textarea>
                 <input type="submit" value='Send'></input>
             </form>
         </div>

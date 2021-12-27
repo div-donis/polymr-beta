@@ -8,7 +8,6 @@
     color: var(--font);
     background-color: var(--secondary);
     min-height: 68px;
-    
 }
 .cards{
     padding: 0 67px 18px 67px;
@@ -21,7 +20,7 @@
     justify-self: center;
     background-color: var(--secondary);
     width: 678px;
-    height: 198px;
+    min-height: 158px;
     border-bottom: 1px solid var(--border);
 }
 .card-container{
@@ -86,6 +85,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: 20px;
 }
 .date-created{
     margin-left: auto;
