@@ -118,10 +118,10 @@
     user-select: none;
 }
 #self{
-    color: var(--bayloo);
+    color: var(--intermediate);
     transition: border .2s ease;
     -webkit-transition: border .2s ease;
-    border-bottom: solid 5px var(--bayloo);
+    border-bottom: solid 5px var(--intermediate);
 }
 #self:hover{
     border-bottom: solid 5px var(--secondary);
@@ -145,10 +145,10 @@
     border-bottom: solid 5px var(--secondary);
 }
 #date{
-    color: var(--intermediate);
+    color: var(--dandy);
     transition: border .2s ease;
     -webkit-transition: border .2s ease;
-    border-bottom: solid 5px var(--intermediate);
+    border-bottom: solid 5px var(--dandy);
 }
 #date:hover{
     border-bottom: solid 5px var(--secondary);

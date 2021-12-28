@@ -66,9 +66,6 @@
     width: 30%;
     height: 49px;
 }
-.category-drop{
-
-}
 .priority-drop{
     background-color: var(--secondary);
     border: solid 1px var(--font);
