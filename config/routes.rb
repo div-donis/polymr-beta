@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :accounts
   resources :users
 
+  get '/*path', to: 'react#index'
+
   post "/login", to: "sessions#create" 
 
   get "/self", to: "users#show" 
@@ -18,7 +20,5 @@ Rails.application.routes.draw do
   get '/accounts/:account_id/closed_tasks', to: 'tasks#closed_tasks_by_account'
   
   get "*path", to: "fallback#index", constraints: ->(req) { req.format.html?  && !req.xhr?}
-
-  match '*all', to: 'application#index', via: [:get]
   
 end

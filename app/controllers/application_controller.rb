@@ -5,10 +5,6 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with:
   :render_unprocessable_entity_response
 
-  def index
-    render file: 'client/public/index.html'
-  end
-
   private
   def authorize
     @current_user = User.find_by(id: session[:user_id])
