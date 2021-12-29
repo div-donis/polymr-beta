@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   resources :accounts
   resources :users
 
-  get '/*path', to: 'react#index'
-
   post "/login", to: "sessions#create" 
 
   get "/self", to: "users#show" 
