@@ -12,7 +12,7 @@ const  Comment = ( {c, user, handleDelete, id, setEditedComment, editedComment, 
 
     const handleEditComment = (e) => {
         e.preventDefault();
-        fetch(`/comments/${c.id}`, {
+        fetch(`/api/comments/${c.id}`, {
             method: 'PATCH',
             body: JSON.stringify({
                 content: editedComment,

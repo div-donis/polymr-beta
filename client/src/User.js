@@ -10,7 +10,7 @@ const User = ( { user, setUser, toggleDarkMode, darkMode} ) => {
     const navigate = useNavigate()
 
     function handleLogout() {
-        fetch("/logout", {
+        fetch("/api/logout", {
           method: "DELETE",
         }).then((r) => {
           if (r.ok) {

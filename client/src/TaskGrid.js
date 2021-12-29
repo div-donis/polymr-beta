@@ -13,7 +13,7 @@ const TaskGrid = ( { user} ) => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`/accounts/${user.account.id}/tasks`)
+        fetch(`/api/accounts/${user.account.id}/tasks`)
           .then((res) => res.json())
           .then((data) => setTasks(data))
           .catch(console.error);
@@ -68,7 +68,7 @@ const TaskGrid = ( { user} ) => {
             }else if (body.length > 2000){
             setError('Description character limit = 2000')
             }else{
-                fetch(`/tasks`, {
+                fetch(`/api/tasks`, {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"

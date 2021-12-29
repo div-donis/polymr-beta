@@ -20,7 +20,7 @@ const Comments = ( {id, user, refresh} ) => {
     }
 
     useEffect(() => {
-           fetch(`/tasks/${id}/comments`)
+           fetch(`/api/tasks/${id}/comments`)
              .then((res) => res.json())
              .then((data) => setComments(data))
              .catch(console.error);
@@ -28,7 +28,7 @@ const Comments = ( {id, user, refresh} ) => {
 
     const handleSubmitComment = (e) => {
         e.preventDefault();
-        fetch('/comments', {
+        fetch('/api/comments', {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -49,7 +49,7 @@ const Comments = ( {id, user, refresh} ) => {
     }
 
     const handleDelete = (e) => {
-        fetch(`/comments/${e}`, {
+        fetch(`/api/comments/${e}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json"
