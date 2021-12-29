@@ -17,6 +17,6 @@ Rails.application.routes.draw do
 
   get '/accounts/:account_id/closed_tasks', to: 'tasks#closed_tasks_by_account'
   
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  get "*path", to: "fallback#index", constraints: ->(req) { req.format.html?  && !req.xhr?}
   
 end
