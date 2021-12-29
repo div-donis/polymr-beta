@@ -23,7 +23,7 @@ const App = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("/api/self").then((res) => {
+    fetch("/self").then((res) => {
       if (res.ok) {
         res.json()
         .then((user) => {

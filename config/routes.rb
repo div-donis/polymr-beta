@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
+
+  post "/login", to: "sessions#create" 
+
+  get "/self", to: "users#show" 
+
+  delete "/logout", to: "sessions#destroy" 
   
   scope '/api' do 
     resources :tasks
     resources :comments
     resources :accounts
     resources :users
-    
-    post "/login", to: "sessions#create" 
-
-    get "/self", to: "users#show" 
-
-    delete "/logout", to: "sessions#destroy" 
 
     get '/tasks/:task_id/comments', to: 'tasks#show_comments'
 
