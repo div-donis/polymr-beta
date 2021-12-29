@@ -2,7 +2,7 @@ import React from 'react'
 import './CreateNew.css'
 import { useState } from 'react'
 
-const Status = ({ active, name, onClick }) => {
+const Priority = ({ active, name, onClick }) => {
     return (
       <div onClick={onClick} className='new-task-tag' id={active ? `${name}-active` : `${name}-non-active`}>
         {name}
@@ -28,7 +28,7 @@ const CreateNew = ({
     handleSubject,
     submitAll}) => {
 
-    const status = ['moderate', 'intermediate', 'critical'];
+    const priority = ['moderate', 'intermediate', 'critical'];
     const categories = ['version-control', 'database', 'feature', 'compiler', 'development', 'reports', 'account', 'miscellaneous bug']
 
     function titleCase(str) {
@@ -48,8 +48,8 @@ const CreateNew = ({
                     <div className='new-content-header'>
                         <div className='priority-dot' style={{backgroundColor: `var(--${dot})`}} >
                         </div>
-                        {status.map(t => (
-                            <Status
+                        {priority.map(t => (
+                            <Priority
                             key={t}
                             name={t}
                             active={t === dot}

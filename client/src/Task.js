@@ -18,12 +18,10 @@ const Task = ( {tasks, user} ) => {
 
     const [value, setValue] = useState(false)
     
-
     const refresh = ()=>{
         setValue((value) => !value);
     }
    
-
     return(
         <div className='solo-task-grid'>
             {tasks.filter((t) => t.id === parseInt(id) )
@@ -44,6 +42,7 @@ const Task = ( {tasks, user} ) => {
                                         <li className='description-pg'>{t.description}</li>
                                     </ul>
                                 </div>
+                                
                                 <div className='status'>{t.status === 'new' ? 'new' : t.status === 'claimed' ? `${t.status} by ${t.assigned_to}` : t.status === 'closed' ? `${t.status} by ${t.closed_by}` : null}</div> 
                                 <div className='task-comments'>
                                     <Comments id={id} user={user} refresh={refresh}/>
