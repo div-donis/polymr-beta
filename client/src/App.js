@@ -50,6 +50,7 @@ const App = () => {
               <Route path="/" element={<Navigate to="/tasks" />} />
               <Route path="/signin" element={<Navigate to="/tasks" />} />
               <Route path='/tasks/*' element={<TaskGrid user={user}/>} /> 
+              <Route element={<Navigate to="/tasks" />}/>
             </Routes>
           <User setUser={setUser} user={user} darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
         </div>
