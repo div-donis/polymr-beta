@@ -39,6 +39,7 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1
   def update
+    task = Task.find_by(id: params[:id])
     if task.update(task_params)
       render json: task
     else

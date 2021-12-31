@@ -27,7 +27,8 @@ const User = ( { user, setUser, toggleDarkMode, darkMode} ) => {
                 <div className='avi-box'>
                     <div><img className='avi' alt='avi' src={`${user.avi}`}></img></div>
                     <div className='user-name'>{user.name}</div>
-                    <div className='company'>{user.company} </div>
+                    <div className='user-username'>:{user.username}</div>
+                    <div className='company'>({user.company})</div>
                 </div>
                 
                 <div className='user-controls'>

@@ -100,3 +100,23 @@
     background-color: var(--bayloo);
     border: none;
 }
+#claim-btn{
+    color: #fff;
+    position: relative;
+    float: left;
+    font-family: var(--sans);
+    background-color: var(--bayloo);
+    border-radius: 25px;
+    width: 60px;
+    cursor: pointer;
+}
+#close-btn{
+    color: #fff;
+    position: relative;
+    float: left;
+    font-family: var(--sans);
+    background-color: var(--critical);
+    border-radius: 25px;
+    width: 60px;
+    cursor: pointer;
+}

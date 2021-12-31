@@ -106,7 +106,7 @@ const TaskGrid = ( { user} ) => {
     return(  
         <Routes>
             <Route exact path='/' element={<Tasks user={user} handleFilterClick={handleFilterClick} filteredTasks={filteredTasks} />} />
-            <Route path='/:id' element={<Task user={user} tasks={tasks} />} />
+            <Route path='/:id' element={<Task user={user} tasks={tasks} setFilterBy={setFilterBy}/>} />
             <Route path="/create-new" element={<CreateNew dot={dot} cat={cat} setDot={setDot} setCat={setCat} error={error} handleBody={handleBody} handleSubject={handleSubject} submitAll={submitAll} />} />  
         </Routes>
     )

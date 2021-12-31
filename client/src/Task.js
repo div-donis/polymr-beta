@@ -1,12 +1,14 @@
 import React from 'react'
 import './Task.css'
 import Comments from './Comments';
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 
-const Task = ( {tasks, user} ) => {
+const Task = ( {tasks, user, setFilterBy} ) => {
  
     const { id } = useParams()
+
+    const navigate = useNavigate()
     
     function titleCase(str) {
         str = str.toLowerCase().split(' ');
@@ -20,6 +22,40 @@ const Task = ( {tasks, user} ) => {
     
     const refresh = ()=>{
         setValue((value) => !value);
+    }
+
+    const handleEditStatus = (x) => {
+        if(x === 'claimed'){
+            fetch(`/api/tasks/${id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    status: 'claimed',
+                    assigned_to: user.username,
+                }), 
+                headers: {
+                    "Content-type": "application/json"
+                },
+            }).then(resp => resp.json())
+            .then(json => console.log(json))
+            .catch(console.error);
+            window.location.reload(false);
+        }else{
+            fetch(`/api/tasks/${id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    status: 'closed',
+                    closed_by: user.username,
+                }), 
+                headers: {
+                    "Content-type": "application/json"
+                },
+            }).then(resp => resp.json())
+            .then(json => console.log(json))
+            .catch(console.error);
+            setFilterBy('all')
+            navigate('/tasks')
+            window.location.reload(false);
+        }
     }
    
     return(
@@ -42,7 +78,7 @@ const Task = ( {tasks, user} ) => {
                                         <li className='description-pg'>{t.description}</li>
                                     </ul>
                                 </div>
-                                
+                                { t.status === 'new' ? <div onClick={() => handleEditStatus('claimed')} id='claim-btn'>claim</div> : t.status === 'claimed' && t.assigned_to === user.username ? <div onClick={() => handleEditStatus('closed')} id='close-btn'>close</div> : null }
                                 <div className='status'>{t.status === 'new' ? 'new' : t.status === 'claimed' ? `${t.status} by ${t.assigned_to}` : t.status === 'closed' ? `${t.status} by ${t.closed_by}` : null}</div> 
                                 <div className='task-comments'>
                                     <Comments id={id} user={user} refresh={refresh}/>

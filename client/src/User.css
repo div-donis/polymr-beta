@@ -37,9 +37,15 @@
     font-variant: small-caps;
     font-weight: 600;
 }
+.user-username{
+    font-size: 13.8px;
+    font-family: var(--tags);
+}
 .company{
+    margin-top: 2px;
     font-size: 14px;
     font-style: italic;
+    color: var(--settled);
 }
 .user-controls{
     width: 100%;
