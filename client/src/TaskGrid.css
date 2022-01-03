@@ -112,7 +112,6 @@
 .filters-child{
     width: 100%;
     font-weight: 600;
-    transition: ease border 0.2s;
     background-color: var(--secondary);
     user-select: none;
 }
@@ -144,13 +143,10 @@
     border-bottom: solid 5px var(--secondary);
 }
 #date{
-    color: var(--dandy);
+    color: var(--font);
     transition: border .2s ease;
     -webkit-transition: border .2s ease;
-    border-bottom: solid 5px var(--dandy);
-}
-#date:hover{
-    border-bottom: solid 5px var(--secondary);
+    border-bottom: 1px solid var(--border);
 }
 #priority-arrow{
     position: relative;
@@ -162,9 +158,20 @@
     position: relative;
     font-size: 20px;
     top: 5px;
-    transition: all ease 0.3s;
+    transition: transform ease 0.3s;
 }
 .tdl{
     color: var(--font);
     text-decoration: none;
+}
+#filter-active{
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--secondary);
+    background-color: var(--secondary);
+}
+#filter-non-active{
+    border-left: 1px solid var(--secondary);
+    border-right: 1px solid var(--secondary);
+    border-bottom: 1px solid var(--border);
 }

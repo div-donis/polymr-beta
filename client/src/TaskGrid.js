@@ -23,12 +23,16 @@ const TaskGrid = ({user}) => {
     function handleFilterClick(x) {
         if(x ==='all'){
             setFilterBy(x);
+            setFilter('all')
         }else if(x === user.email){
             setFilterBy(x)
+            setFilter('self')
         }else if(x === 'critical'){
             setFilterBy(x)
+            setFilter('critical')
         }else{
             setFilterBy(x);
+            setFilter('self')
         }  
     }
 
@@ -54,6 +58,7 @@ const TaskGrid = ({user}) => {
     const [sub, setSub] = useState('')
     const [body, setBody] = useState('')
     const [error, setError] = useState('')
+    const [filter, setFilter] = useState('all')
 
     const handleSubject = (x) => {
         setSub(x)
@@ -110,6 +115,7 @@ const TaskGrid = ({user}) => {
             <Route exact path='/' 
                 element={
                     <Tasks 
+                        filter={filter}
                         user={user} 
                         handleFilterClick={handleFilterClick} 
                         filteredTasks={filteredTasks}  

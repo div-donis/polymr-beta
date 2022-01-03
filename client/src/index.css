@@ -20,7 +20,7 @@
   --font: rgb(26, 26, 26);
   --tags: 'Roboto Mono', monospace;
   --sans: 'Source Sans Pro', sans-serif;
-  --border: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.219);
 }
 [data-theme="light"] {
   --primary: #f3f3f3;
@@ -30,7 +30,7 @@
   --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   --shadow-hover: rgba(14, 30, 37, 0.03) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.16) 0px 2px 16px 0px;
-  --border: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.219);
 }
 
 [data-theme="dark"] {
@@ -41,7 +41,7 @@
   --shadow: rgba(3, 3, 3, 0.692) 0px 0px 4px;
   --shadow-hover: rgba(32, 32, 32, 0.726) 0px 0px 6px,
     rgba(0, 0, 0, 0.63) 2px 2px 4px;
-  --border: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.219);
 }
 
 body {

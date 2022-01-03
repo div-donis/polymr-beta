@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 import  { useState }  from 'react'
 import Moment from 'react-moment';
 
-const Tasks = ({user, filteredTasks, handleFilterClick}) => {
+const Tasks = ({
+    filter, 
+    filteredTasks, 
+    handleFilterClick}) => {
     const [filterDate, setFilterDate] = useState(false)
     const [filterPriority, setFilterPriority] = useState(false)
 
@@ -75,7 +78,12 @@ const Tasks = ({user, filteredTasks, handleFilterClick}) => {
         <div className='task-grid'>
             {filteredTasks ? <div className='task-container'>      
                 <div className='cards'>
-                    <Filter handleTogglePriority={handleTogglePriority} handleToggleDate={handleToggleDate} handleFilterClick={handleFilterClick}/>
+                    <Filter 
+                        handleTogglePriority={handleTogglePriority} 
+                        handleToggleDate={handleToggleDate} 
+                        handleFilterClick={handleFilterClick}
+                        filter={filter}
+                    />
                     <div className='card-container'>
                     {filteredTasks.length > 0 ?
                     filteredTasks.map((t) =>   

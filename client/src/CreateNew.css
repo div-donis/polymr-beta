@@ -108,7 +108,7 @@
     background-color: var(--critical);
     color: white;
 }
-.cat-active {
+#cat-active {
     background-color: var(--bayloo);
     color: white;
 }

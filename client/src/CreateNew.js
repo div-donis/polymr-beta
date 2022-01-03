@@ -20,7 +20,7 @@ const Categories = ({ active, name, onClick }) => {
         <div 
             onClick={onClick} 
             className='new-task-cat' 
-            className={active ? 
+            id={active ? 
             `cat-active` 
             : `cat-non-active`}
         >
