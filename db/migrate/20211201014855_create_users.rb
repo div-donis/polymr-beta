@@ -9,6 +9,8 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :company
       t.boolean :admin
       t.integer :account_id
+      t.string :password_digest
+
       t.timestamps
     end
   end

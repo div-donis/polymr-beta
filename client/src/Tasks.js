@@ -2,18 +2,12 @@ import React from "react"
 import Filter from './Filter'
 import { Link } from 'react-router-dom'
 import  { useState }  from 'react'
-
-
+import Moment from 'react-moment';
 
 const Tasks = ({user, filteredTasks, handleFilterClick}) => {
     const [filterDate, setFilterDate] = useState(false)
     const [filterPriority, setFilterPriority] = useState(false)
 
-
-    
-        
-
-     
     function titleCase(str) {
         str = str.toLowerCase().split(' ');
         for (var i = 0; i < str.length; i++) {
@@ -92,7 +86,11 @@ const Tasks = ({user, filteredTasks, handleFilterClick}) => {
                                     </div>
                                     <div className='task-tag'>{t.priority === 'critical' ? 'critical' : t.priority === 'moderate' ? 'moderate' : t.priority === 'intermediate' ? 'intermediate' : null}
                                     </div>                              
-                                    <div className='date-created'>Date Created: {t.created_at}</div>
+                                    <div className='date-created'>Date Created: 
+                                        <Moment format="MM/DD/YYYY">
+                                            {t.created_at}
+                                        </Moment>
+                                    </div>
                                 </div>
                                     <div className='content-body'>
                                         <ul className='task-details'>

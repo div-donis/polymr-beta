@@ -14,6 +14,7 @@ category = ['version-control', 'database', 'feature', 'compiler', 'development',
 end
 
 10.times do 
+    password = Faker::Internet.password(min_length: 10, max_length: 20)
     User.create(
         name: Faker::Name.name,
         email: Faker::Internet.unique.email,
@@ -23,6 +24,8 @@ end
         company: Faker::Company.name,
         admin: Faker::Boolean.boolean(true_ratio: 0.1),
         account_id: 1,
+        password: password,
+        password_confirmation: password
     )
 end
 
@@ -36,6 +39,8 @@ end
         company: Faker::Company.name,
         admin: Faker::Boolean.boolean(true_ratio: 0.1),
         account_id: 1,
+        password: 'polymrtest1',
+        password_confirmation: 'polymrtest1'
     )
 end
 

@@ -1,9 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import './LogIn.css'
+import { useNavigate } from 'react-router-dom'
 
 const LogIn = ( { onLogin, user } ) => {
-    const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -12,7 +15,7 @@ const LogIn = ( { onLogin, user } ) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, password }),
     })
       .then((r) => r.json())
       .then((user) => {
@@ -23,12 +26,29 @@ const LogIn = ( { onLogin, user } ) => {
   console.log(user)
   return (
     <div className='login'>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      {/*<div id='signup-link' onClick={() => {navigate('/signup')
+        onLogin('')} }>Sign Up</div>*/}
+      <form onSubmit={handleSubmit} autoComplete="new-password" >
+        <p>
+          <label for="email">Email: {' '}</label>
+            <input
+              autoComplete="new-password" 
+              name='email'
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+        </p>
+        <p>
+          <label for="password">Password: {' '}</label>
+            <input
+               
+              name="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+        </p>
         <button type="submit">Login</button>
       </form>
       <div className="login-error">{user?.errors ? user.errors : null}</div>

@@ -6,9 +6,20 @@ import {
 import { useState } from 'react'
 import EditComment from './EditComment'
 
-const  Comment = ( {c, user, handleDelete, id, setEditedComment, editedComment, handleUpdatedComment} ) => {
+const Comment = ({
+    c, 
+    user, 
+    handleDelete, 
+    id, 
+    setEditedComment, 
+    editedComment, 
+    handleUpdatedComment}) => {
 
     const [isEditing, setIsEditing] = useState(false)
+
+    const handleEditing = () => {
+        setIsEditing((isEditing) => !isEditing)
+    }
 
     const handleEditComment = (e) => {
         e.preventDefault();
@@ -29,13 +40,8 @@ const  Comment = ( {c, user, handleDelete, id, setEditedComment, editedComment, 
         handleUpdatedComment(c.id)
     }
 
-    const handleEditing = () => {
-        setIsEditing((isEditing) => !isEditing)
-    }
-    
     return (
         <div className='comment-component'>
-           
             <div className='task-comment'>
                 <div className='comment-user'>
                     <div>
@@ -43,12 +49,23 @@ const  Comment = ( {c, user, handleDelete, id, setEditedComment, editedComment, 
                             <img alt='avi' src={`${c.user.avi}`}></img>
                         </div> 
                         <div className='comment-name'>{c.user.name}</div>
-                        <div className='delete-btn'>{user.id === c.user.id ? <><FiEdit onClick={handleEditing} /><FiDelete onClick={() => handleDelete(c.id)}/></> : null}</div>
+                        <div className='delete-btn'>{user.id === c.user.id ? 
+                            <>
+                                <FiEdit onClick={handleEditing} />
+                                <FiDelete onClick={() => handleDelete(c.id)}/>
+                            </> 
+                            : null}
+                        </div>
                     </div>
                 </div>
-                <div className='comment-content'>{isEditing ? <EditComment handleEditComment={handleEditComment} setEditedComment={setEditedComment} c={c}/> : c.content }</div>
-            </div>
-            
+                <div className='comment-content'>{isEditing ? 
+                    <EditComment 
+                        handleEditComment={handleEditComment} 
+                        setEditedComment={setEditedComment} 
+                        c={c}/> 
+                    : c.content}
+                </div>
+            </div>   
         </div>
     )
 }

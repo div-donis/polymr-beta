@@ -3,7 +3,6 @@ class AccountsController < ApplicationController
   # GET /accounts
   def index
     accounts = Account.all
-
     render json: accounts
   end
 

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   post "/login", to: "sessions#create" 
 
+  post "/signup", to: "users#create" 
+
   get "/self", to: "users#show" 
 
   delete "/logout", to: "sessions#destroy" 

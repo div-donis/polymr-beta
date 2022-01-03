@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_015213) do
     t.string "company"
     t.boolean "admin"
     t.integer "account_id"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

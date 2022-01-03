@@ -6,7 +6,8 @@ import CreateNew from './CreateNew';
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 
-const TaskGrid = ( { user} ) => {
+
+const TaskGrid = ({user}) => {
 
     const [tasks, setTasks] = useState([])
     const [filterBy, setFilterBy] = useState('')
@@ -53,6 +54,7 @@ const TaskGrid = ( { user} ) => {
     const [sub, setSub] = useState('')
     const [body, setBody] = useState('')
     const [error, setError] = useState('')
+
     const handleSubject = (x) => {
         setSub(x)
     }
@@ -60,7 +62,7 @@ const TaskGrid = ( { user} ) => {
     const handleBody = (x) => {
         setBody(x)
     }
-    console.log(tasks)
+
     const submitAll = () => {
         if(sub && body){
             if(sub.length > 30){
@@ -105,9 +107,38 @@ const TaskGrid = ( { user} ) => {
 
     return(  
         <Routes>
-            <Route exact path='/' element={<Tasks user={user} handleFilterClick={handleFilterClick} filteredTasks={filteredTasks} />} />
-            <Route path='/:id' element={<Task user={user} tasks={tasks} setFilterBy={setFilterBy}/>} />
-            <Route path="/create-new" element={<CreateNew dot={dot} cat={cat} setDot={setDot} setCat={setCat} error={error} handleBody={handleBody} handleSubject={handleSubject} submitAll={submitAll} />} />  
+            <Route exact path='/' 
+                element={
+                    <Tasks 
+                        user={user} 
+                        handleFilterClick={handleFilterClick} 
+                        filteredTasks={filteredTasks}  
+                    />
+                } 
+            />
+            <Route path='/:id' 
+                element={
+                    <Task 
+                        user={user} 
+                        tasks={tasks} 
+                        setFilterBy={setFilterBy}
+                    />
+                } 
+            />
+            <Route path="/create-new" 
+                element={
+                    <CreateNew 
+                    dot={dot} 
+                    cat={cat} 
+                    setDot={setDot} 
+                    setCat={setCat} 
+                    error={error} 
+                    handleBody={handleBody} 
+                    handleSubject={handleSubject} 
+                    submitAll={submitAll} 
+                    />
+                } 
+            />  
         </Routes>
     )
 }

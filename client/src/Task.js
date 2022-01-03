@@ -3,8 +3,12 @@ import './Task.css'
 import Comments from './Comments';
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import Moment from 'react-moment';
 
-const Task = ( {tasks, user, setFilterBy} ) => {
+const Task = ({
+    tasks, 
+    user, 
+    setFilterBy}) => {
  
     const { id } = useParams()
 
@@ -69,7 +73,11 @@ const Task = ( {tasks, user, setFilterBy} ) => {
                                 <div className='content-header'>
                                     <div className='priority-dot' style={{backgroundColor: t.priority === 'critical' ? 'var(--critical)' : t.priority === 'moderate' ? 'var(--moderate)' : 'var(--intermediate'}}></div>
                                     <div className='task-tag'>{t.priority === 'critical' ? 'critical' : t.priority === 'moderate' ? 'moderate' : t.priority === 'intermediate' ? 'intermediate' : null}</div>                              
-                                    <div className='date-created'>Date Created: {t.created_at}</div>
+                                    <div className='date-created'>Date Created: 
+                                        <Moment format="MM/DD/YYYY">
+                                            {t.created_at}
+                                        </Moment>
+                                    </div>
                                 </div>
                                 <div className='content-body'>
                                     <ul className='task-details'>

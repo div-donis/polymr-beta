@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react';
 import Comment from './Comment'
 
 
-const Comments = ( {id, user, refresh} ) => {
+const Comments = ({
+    id, 
+    user, 
+    refresh}) => {
 
     const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState('')
@@ -69,14 +72,23 @@ const Comments = ( {id, user, refresh} ) => {
     
     return(
         <div>
-            { filteredComments ? 
-            filteredComments.map((c) => <Comment key={c.id} editedComment={editedComment} handleUpdatedComment={handleUpdatedComment} setEditedComment={setEditedComment} id={id} refresh={refresh} c={c} handleDelete={handleDelete} user={user}/>) : null }
+            {filteredComments ? 
+            filteredComments.map((c) => 
+                <Comment 
+                    key={c.id} 
+                    editedComment={editedComment} 
+                    handleUpdatedComment={handleUpdatedComment} 
+                    setEditedComment={setEditedComment} 
+                    id={id} refresh={refresh} 
+                    c={c} 
+                    handleDelete={handleDelete} 
+                    user={user}/>) 
+                : null }
             <form className='add-comment'onSubmit={handleSubmitComment}>
                 <textarea type="text" name="comment" autoFocus onChange={(e) => setNewComment(e.target.value)}></textarea>
                 <input type="submit" value='Send'></input>
             </form>
-        </div>
-                    
+        </div>           
     )
 }
 

@@ -1,10 +1,17 @@
 import React from 'react'
 
-const EditComment = ({ setEditedComment, c, handleEditComment}) => {
+const EditComment = ({ 
+    setEditedComment, 
+    c, 
+    handleEditComment}) => {
 
     return(
         <form className='edit-comment'>
-            <textarea defaultValue={`${c.content}`} autoFocus onChange={(e) => setEditedComment(e.target.value)}></textarea>
+            <textarea 
+                defaultValue={`${c.content}`} 
+                autoFocus 
+                onChange={(e) => setEditedComment(e.target.value)}>
+            </textarea>
             <input type='submit' onClick={handleEditComment}></input>
         </form>
     )
