@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const LogIn = ( { onLogin, user } ) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [readOnly, setReadOnly] = useState(true);
   const navigate = useNavigate()
 
   function handleSubmit(e) {
@@ -32,7 +33,10 @@ const LogIn = ( { onLogin, user } ) => {
         <p>
           <label for="email">Email: {' '}</label>
             <input
-              autoComplete="new-password" 
+              autoComplete="off" 
+              readOnly={readOnly}
+              onFocus={ () => setReadOnly(false) }
+              onBlur={ () => setReadOnly(true) }
               name='email'
               type="text"
               value={email}
@@ -42,7 +46,10 @@ const LogIn = ( { onLogin, user } ) => {
         <p>
           <label for="password">Password: {' '}</label>
             <input
-               
+              autoComplete="off"
+              readOnly={readOnly}
+              onFocus={ () => setReadOnly(false) }
+              onBlur={ () => setReadOnly(true) }
               name="password"
               type="password"
               value={password}
