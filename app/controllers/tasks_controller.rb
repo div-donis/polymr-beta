@@ -6,8 +6,9 @@ class TasksController < ApplicationController
     render json: tasks
   end
 
+  # GET /accounts/:account_id/tasks
   def tasks_by_account
-    tasks = Task.all.filter { |t| t.status != 'closed'}
+    tasks = Task.all.filter { |t| t.status != 'closed' && t.account_id.to_s === params[:account_id]}
     render json: tasks
   end
 

@@ -23,7 +23,7 @@ end
         bio: Faker::Lorem.sentence(word_count: 15),
         company: Faker::Company.name,
         admin: Faker::Boolean.boolean(true_ratio: 0.1),
-        account_id: 1,
+        account_id: 2,
         password: password,
         password_confirmation: password
     )
@@ -38,7 +38,7 @@ end
         bio: Faker::Lorem.sentence(word_count: 15),
         company: Faker::Company.name,
         admin: Faker::Boolean.boolean(true_ratio: 0.1),
-        account_id: 1,
+        account_id: 2,
         password: 'polymrtest1',
         password_confirmation: 'polymrtest1'
     )
@@ -56,7 +56,7 @@ end
         category: category.sample,
         description: Faker::Lorem.sentence(word_count: 40),
         user_id: random_user.id,
-        account_id: 1
+        account_id: 2
     )
 end
 
@@ -73,7 +73,7 @@ end
         category: category.sample,
         description: Faker::Lorem.sentence(word_count: 40),
         user_id: assigned_user.id,
-        account_id: 1
+        account_id: 2
     )
 end
 
@@ -90,7 +90,7 @@ end
         category: category.sample,
         description: Faker::Lorem.sentence(word_count: 40),
         user_id: assigned_user.id,
-        account_id: 1
+        account_id: 2
     )
 end
 
