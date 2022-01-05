@@ -101,30 +101,44 @@
     border: none;
 }
 #claim-btn{
-    color: var(--font);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: var(--border);
     position: relative;
     float: left;
     font-family: var(--sans);
-    border-radius: 25px;
-    border: 1px solid var(--font);
-    width: 60px;
+    border: 1px solid var(--border);
+    width: 22px;
+    height: 22px;
     cursor: pointer;
 }
 #claim-btn:hover{
-    color: var(--secondary);
-    background-color: var(--font);
+    color: var(--font);
+    border: 1px solid var(--font);
 }
 #close-btn{
-    color: var(--font);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    color: var(--border);
     position: relative;
     float: left;
     font-family: var(--sans);
-    border-radius: 25px;
-    border: 1px solid var(--font);
-    width: 60px;
+    border: 1px solid var(--border);
+    width: 22px;
+    height: 22px;
     cursor: pointer;
+    
 }
 #close-btn:hover{
-    color: var(--secondary);
-    background-color: var(--font);
+    color: var(--font);
+    border: 1px solid var(--font);
+}
+#close-icon{
+    transform: rotate(45deg);
 }

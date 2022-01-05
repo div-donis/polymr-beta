@@ -4,6 +4,7 @@ import Comments from './Comments';
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import Moment from 'react-moment';
+import { FiPlus } from 'react-icons/fi'
 
 const Task = ({
     tasks, 
@@ -86,7 +87,7 @@ const Task = ({
                                         <li className='description-pg'>{t.description}</li>
                                     </ul>
                                 </div>
-                                { t.status === 'new' ? <div onClick={() => handleEditStatus('claimed')} id='claim-btn'>claim</div> : t.status === 'claimed' && t.assigned_to === user.username ? <div onClick={() => handleEditStatus('closed')} id='close-btn'>close</div> : null }
+                                { t.status === 'new' ? <div onClick={() => handleEditStatus('claimed')} id='claim-btn'><FiPlus /></div> : t.status === 'claimed' && t.assigned_to === user.username ? <div onClick={() => handleEditStatus('closed')} id='close-btn'><FiPlus id='close-icon' /></div> : null }
                                 <div className='status'>{t.status === 'new' ? 'new' : t.status === 'claimed' ? `${t.status} by ${t.assigned_to}` : t.status === 'closed' ? `${t.status} by ${t.closed_by}` : null}</div> 
                                 <div className='task-comments'>
                                     <Comments id={id} user={user} refresh={refresh}/>
