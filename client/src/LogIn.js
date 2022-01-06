@@ -1,13 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import './LogIn.css'
-import { useNavigate } from 'react-router-dom'
+
 
 const LogIn = ( { onLogin, user } ) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [readOnly, setReadOnly] = useState(true);
-  const navigate = useNavigate()
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,10 +18,10 @@ const LogIn = ( { onLogin, user } ) => {
       body: JSON.stringify({ email, password }),
     })
       .then((r) => r.json())
-      .catch((err) => console.log(err))
       .then((user) => {
         onLogin(user) 
       })
+      .catch((err) => console.log('error', err))
       
 
   }
@@ -30,8 +29,6 @@ const LogIn = ( { onLogin, user } ) => {
   console.log(user)
   return (
     <div className='login'>
-      {/*<div id='signup-link' onClick={() => {navigate('/signup')
-        onLogin('')} }>Sign Up</div>*/}
       <form onSubmit={handleSubmit} autoComplete="new-password" >
         <p>
           <label for="email">Email: {' '}</label>
