@@ -21,7 +21,9 @@ const LogIn = ( { onLogin, user } ) => {
       .then((r) => r.json())
       .then((user) => {
         onLogin(user) 
-      }); 
+      })
+      .catch(console.error)
+
   }
   
   console.log(user)
