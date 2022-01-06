@@ -17,6 +17,7 @@ const LogIn = ( { onLogin, user } ) => {
       },
       body: JSON.stringify({ email, password }),
     })
+      .then((r) => console.log(r))
       .then((r) => r.json())
       .then((user) => {
         onLogin(user) 
