@@ -8,7 +8,7 @@ import {
 }
 from 'react-icons/bs'
 
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Navigation = () => {
     return(
@@ -27,7 +27,6 @@ const Navigation = () => {
                 </Link>
                     <div className='nav-link' id='notifications-tab'><BsFillBellFill /></div>
                 </nav>
-                <Outlet />
         </div>
     )
 }

@@ -63,23 +63,15 @@ const App = () => {
     )
   } else {
     return(
-      <html>
-        <head>
-          <title>polymr collaborative task tracker</title>
-        </head>
-        <body>
-          <div className="App" data-theme={darkMode ? "dark" : "light"}>
-            <div className='plate'>
-              <Routes>
-                <Route path="/" element={<Navigate to="/signin" />}/>
-                <Route path='/signin' element={<LogIn onLogin={setUser} user={user}/>}/> 
-                <Route path='/signup' element={<SignUp onLogin={setUser} user={user}/>}/>
-              </Routes>
-            </div>        
-          </div>
-          <script src="/client.entry.js" />
-        </body>
-      </html>
+      <div className="App" data-theme={darkMode ? "dark" : "light"}>
+        <div className='plate'>
+          <Routes>
+            <Route path="/" element={<Navigate to="/signin" />}/>
+            <Route path='/signin' element={<LogIn onLogin={setUser} user={user}/>}/> 
+            <Route path='/signup' element={<SignUp onLogin={setUser} user={user}/>}/>
+          </Routes>
+        </div>        
+      </div>
     )
   }
 }
