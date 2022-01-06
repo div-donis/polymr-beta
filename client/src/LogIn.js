@@ -19,10 +19,11 @@ const LogIn = ( { onLogin, user } ) => {
       body: JSON.stringify({ email, password }),
     })
       .then((r) => r.json())
+      .catch((err) => console.log(err))
       .then((user) => {
         onLogin(user) 
       })
-      .catch(console.error)
+      
 
   }
   
