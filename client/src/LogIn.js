@@ -37,9 +37,7 @@ const LogIn = ( { onLogin, user } ) => {
           <label for="email">Email: {' '}</label>
             <input
               autoComplete="off" 
-              readOnly={readOnly}
-              onFocus={ () => setReadOnly(false) }
-              onBlur={ () => setReadOnly(true) }
+   
               name='email'
               type="text"
               value={email}
@@ -50,9 +48,7 @@ const LogIn = ( { onLogin, user } ) => {
           <label for="password">Password: {' '}</label>
             <input
               autoComplete="off"
-              readOnly={readOnly}
-              onFocus={ () => setReadOnly(false) }
-              onBlur={ () => setReadOnly(true) }
+        
               name="password"
               type="password"
               value={password}
