@@ -2,7 +2,7 @@
 
 # polymr collaboration center & task/bug tracker
 
-To launch this project in localhost, for this repository then  run:
+To launch this project in localhost, fork this repository then  run:
 
 bundle install
 
